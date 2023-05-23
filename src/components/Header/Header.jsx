@@ -9,11 +9,11 @@ import { NavLink } from 'react-router-dom';
 //   }
 // `;
 
-const Header = ({ open }) => {
+const Header = () => {
   return (
     <nav className="">
       <div className="container">
-        <span className="navbar-brand mb-0 h1 text-success">Navbar</span>
+        <span className="navbar-brand">Navbar</span>
         <div className="navbar-nav">
           <NavLink className="nav-link" aria-current="page" to="/">
             Home

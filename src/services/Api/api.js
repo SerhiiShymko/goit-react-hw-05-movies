@@ -6,7 +6,7 @@ const TREND_URL = `${BASE_URL}/trending/all/day`;
 const SEARCH_URL = `${BASE_URL}/search/movie`;
 const ID_URL = `${BASE_URL}/movie`;
 
-export { API_KEY, BASE_URL, TREND_URL, SEARCH_URL, ID_URL };
+// export { API_KEY, BASE_URL, TREND_URL, SEARCH_URL, ID_URL };
 
 // import { API_KEY, BASE_URL, TREND_URL, SEARCH_URL, ID_URL } from './api';
 
@@ -17,3 +17,13 @@ export { API_KEY, BASE_URL, TREND_URL, SEARCH_URL, ID_URL };
 // }
 
 // export default getTrending;
+
+export async function getTrending() {
+  const url = `${BASE_URL}/trending/all/day?api_key=${API_KEY}&language=en-US`;
+  return await axios
+    .get(url)
+    .then(response => {
+      return response.data;
+    })
+    .catch(error => console.log(error));
+}
