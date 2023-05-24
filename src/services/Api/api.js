@@ -31,7 +31,7 @@ export async function searchMovie(queryString) {
 }
 
 export async function getMovieDetails(id) {
-  const url = `${ID_URL}?${id}&language=en-US`;
+  const url = `${ID_URL}?api_key=${API_KEY}?${id}&language=en-US`;
   return await axios
     .get(url)
     .then(response => {
