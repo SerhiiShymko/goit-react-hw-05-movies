@@ -4,7 +4,6 @@ import { getMovieReviews } from '../../services/Api/api';
 
 const Reviews = () => {
   const [reviewsList, setReviewsList] = useState([]);
-  console.log(reviewsList)
   const { movieId } = useParams();
 
   useEffect(() => {

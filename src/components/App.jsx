@@ -6,15 +6,16 @@ import { Routes, Route } from 'react-router-dom';
 // const Reviews = lazy(() => import('components/Reviews/Reviews'));
 // const HomePage = lazy(() => import('pages/HomePage/HomePage'));
 // const MoviesPage = lazy(() => import('pages/MoviesPage/MoviesPage'));
-// const MovieDetails = lazy(() =>
-//   import('pages/MovieDetails/MovieDetails')
+// const MovieDetailsPage = lazy(() =>
+//   import('pages/MovieDetailsPage/MovieDetailsPage')
 // );
+
 import Layout from 'components/Layout/Layout';
 import Cast from 'components/Cast/Cast';
 import Reviews from 'components/Reviews/Reviews';
 import HomePage from 'pages/HomePage/HomePage';
 import MoviesPage from 'pages/MoviesPage/MoviesPage';
-import MovieDetailsPage from 'pages/MovieDetailsPage/MovieDetailsPage';
+import MovieDetailsPage from 'components/MovieDetails/MovieDetailsPage';
 
 // import NotFound from '/pages/NotFound';
 

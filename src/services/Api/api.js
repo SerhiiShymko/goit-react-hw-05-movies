@@ -20,7 +20,7 @@ export async function getTrending() {
     .catch(error => console.log(error));
 }
 
-export async function searchMovie(queryString) {
+export async function searchMovies(queryString) {
   const url = `${SEARCH_URL}?query=${queryString}&language=en-US`;
   return await axios
     .get(url)

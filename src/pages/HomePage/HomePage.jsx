@@ -1,6 +1,6 @@
 // import PropTypes from 'prop-types';
 import { getTrending } from '../../services/Api/api';
-import Loader from '../../components/Loader/Loader';
+import Loader from 'components/Loader/Loader';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 // import css from './HomePage.module.css';
