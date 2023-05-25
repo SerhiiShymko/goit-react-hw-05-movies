@@ -1,26 +1,25 @@
-import { useParams, Link, Outlet } from 'react-router-dom';
+import { useParams, Link, Outlet, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { getMovieDetails } from '../../services/Api/api';
 
-const MovieDetails = () => {
-  const [movieDatail, setMovieDatails] = useState();
+const MovieDetailsPage = () => {
+  const [movieDatail, setMovieDatail] = useState({});
+  const location = useLocation();
   const { movieId } = useParams();
   const { original_title, overview, genres, poster_path, vote_average } =
     movieDatail;
 
   useEffect(() => {
-    getMovieDetails(movieId).then(data => setMovieDatails(data));
+    getMovieDetails(movieId).then(data => setMovieDatail(data));
   }, [movieId]);
 
-  //   const { original_title, overview, genres, poster_path, vote_average } =
-  //     movieDatail;
-  //   const score = vote_average * 10;
-  //   const scoreToFixed = score.toFixed(2);
+  const score = vote_average * 10;
+  const scoreToFixed = score.toFixed();
 
   return (
     <>
       <button type="button">
-        <Link to={'/'}>Go back</Link>
+        <Link to={location.state?.from ?? '/'}>Go back</Link>
       </button>
       <div className="boxMovie">
         <img
@@ -35,8 +34,8 @@ const MovieDetails = () => {
           alt="poster"
         />
         <div className="infoMovie">
-          <title>{original_title}</title>
-          <h3>User score: {vote_average}%</h3>
+          <h2>{original_title}</h2>
+          <h3>User score: {scoreToFixed}%</h3>
           <h3>Overview</h3>
           <p>{overview} </p>
           <h3>Genres</h3>
@@ -52,11 +51,15 @@ const MovieDetails = () => {
         <h4>Additional information</h4>
         <ul>
           <li>
-            <Link to="cast">Cast</Link>
+            <Link to="cast" state={{ ...location.state }}>
+              Cast
+            </Link>
           </li>
           <li>
             {' '}
-            <Link to="reviews">Reviews</Link>
+            <Link to="reviews" state={{ ...location.state }}>
+              Reviews
+            </Link>
           </li>
         </ul>
       </div>
@@ -65,4 +68,4 @@ const MovieDetails = () => {
   );
 };
 
-export default MovieDetails;
+export default MovieDetailsPage;

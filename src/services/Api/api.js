@@ -31,7 +31,7 @@ export async function searchMovie(queryString) {
 }
 
 export async function getMovieDetails(id) {
-  const url = `${ID_URL}?api_key=${API_KEY}?${id}&language=en-US`;
+  const url = `${ID_URL}/${id}?api_key=${API_KEY}&language=en-US`;
   return await axios
     .get(url)
     .then(response => {
@@ -41,7 +41,7 @@ export async function getMovieDetails(id) {
 }
 
 export async function getMovieCast(id) {
-  const url = `${ID_URL}?${id}/credits&language=en-US`;
+  const url = `${ID_URL}/${id}/credits?api_key=${API_KEY}&language=en-US`;
   return await axios
     .get(url)
     .then(response => {
@@ -51,7 +51,7 @@ export async function getMovieCast(id) {
 }
 
 export async function getMovieReviews(id) {
-  const url = `${ID_URL}?${id}/reviews&language=en-US`;
+  const url = `${ID_URL}/${id}/reviews?api_key=${API_KEY}&language=en-US`;
   return await axios
     .get(url)
     .then(response => {
