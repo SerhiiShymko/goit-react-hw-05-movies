@@ -2,9 +2,8 @@ import { Link, useSearchParams, useLocation } from 'react-router-dom';
 import Loader from 'components/Loader/Loader';
 import { searchMovies } from '../../services/Api/api';
 import { useState, useEffect } from 'react';
-import SearchForm from 'components/Search/SearchForm';
+import SearchForm from 'components/SearchForm/SearchForm';
 
-// import { Search } from 'components/Search/Search';
 // import css from './MoviesPage.module.css';
 
 function MoviesPage() {
@@ -12,36 +11,38 @@ function MoviesPage() {
   const [searchParams, setSearchParams] = useSearchParams();
   const movieName = searchParams.get('movieName') ?? '';
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState(false);
   const [moviesList, setMoviesList] = useState([]);
 
   useEffect(() => {
-    if (movieName.trim() === '') {
+    if (movieName === '') {
       // alert.error('Enter text to search');
       return;
     }
+    setMoviesList([]);
     setIsLoading(true);
 
-    searchMovies(moviesList).then(data => {
-      if (!data.results.length) {
+    searchMovies(movieName).then(data => {
+      if (!data || !data.results || data.results.length === 0) {
         setIsLoading(false);
         setError(true);
+
         return console.log(
-          'There is no movies with this request. Please, try again'
+          'There are no movies for this request. Please try again'
         );
       }
       setError(false);
       setMoviesList(data.results);
       setIsLoading(false);
     });
-  }, [moviesList]);
+  }, [movieName]);
 
   const handleSubmit = e => {
     e.preventDefault();
 
-    const searchForm = e.currentTarget;
-    setSearchParams(e.currentTarget.value.toLowerCase());
-    searchForm.reset();
+    const search = e.currentTarget;
+    setSearchParams({ movieName: search.elements.movieName.value });
+    search.reset();
   };
 
   return (

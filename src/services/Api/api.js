@@ -6,10 +6,6 @@ const TREND_URL = `${BASE_URL}/trending/all/day`;
 const SEARCH_URL = `${BASE_URL}/search/movie`;
 const ID_URL = `${BASE_URL}/movie`;
 
-// export { API_KEY, BASE_URL, TREND_URL, SEARCH_URL, ID_URL };
-
-// import { API_KEY, BASE_URL, TREND_URL, SEARCH_URL, ID_URL } from './api';
-
 export async function getTrending() {
   const url = `${TREND_URL}?api_key=${API_KEY}&language=en-US`;
   return await axios
@@ -20,8 +16,8 @@ export async function getTrending() {
     .catch(error => console.log(error));
 }
 
-export async function searchMovies(queryString) {
-  const url = `${SEARCH_URL}?query=${queryString}&language=en-US`;
+export async function searchMovies(query) {
+  const url = `${SEARCH_URL}?api_key=${API_KEY}&include_adult=false&query=${query}&language=en-US&page=1`;
   return await axios
     .get(url)
     .then(response => {
