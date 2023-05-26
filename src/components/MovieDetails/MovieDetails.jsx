@@ -2,7 +2,7 @@ import { useParams, Link, Outlet, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { getMovieDetails } from '../../services/Api/api';
 
-const MovieDetailsPage = () => {
+const MovieDetails = () => {
   const [movieDatail, setMovieDatail] = useState({});
   const location = useLocation();
   const { movieId } = useParams();
@@ -68,4 +68,4 @@ const MovieDetailsPage = () => {
   );
 };
 
-export default MovieDetailsPage;
+export default MovieDetails;
