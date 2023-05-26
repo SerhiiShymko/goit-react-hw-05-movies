@@ -2,7 +2,7 @@ import { FaSearch } from 'react-icons/fa';
 import PropTypes from 'prop-types';
 import css from './SearchForm.module.css';
 
-function SearchForm({ onSubmit }) {
+const SearchForm = ({ onSubmit }) => {
   return (
     <div className={css.searchbar}>
       <form className={css.searchForm} onSubmit={onSubmit}>
@@ -24,7 +24,7 @@ function SearchForm({ onSubmit }) {
       </form>
     </div>
   );
-}
+};
 
 SearchForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,

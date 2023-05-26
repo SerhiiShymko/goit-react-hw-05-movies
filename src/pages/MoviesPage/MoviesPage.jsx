@@ -6,7 +6,7 @@ import SearchForm from 'components/SearchForm/SearchForm';
 
 // import css from './MoviesPage.module.css';
 
-function MoviesPage() {
+const MoviesPage = () => {
   const location = useLocation();
   const [searchParams, setSearchParams] = useSearchParams();
   const movieName = searchParams.get('movieName') ?? '';
@@ -28,7 +28,7 @@ function MoviesPage() {
         setError(true);
 
         return console.log(
-          'There are no movies for this request. Please try again'
+          'There are no movies for this request. Please, try again'
         );
       }
       setError(false);
@@ -47,7 +47,7 @@ function MoviesPage() {
 
   return (
     <>
-      <SearchForm onSubmit={handleSubmit} />
+      <SearchForm onSubmit={handleSubmit} setSearchParams={setSearchParams} />
       {error && <p>There is no movies with this request. Please, try again</p>}
       <div>
         {moviesList.map(movie => (
@@ -61,6 +61,6 @@ function MoviesPage() {
       </div>
     </>
   );
-}
+};
 
 export default MoviesPage;
