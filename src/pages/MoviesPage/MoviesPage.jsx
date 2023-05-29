@@ -3,8 +3,7 @@ import Loader from 'components/Loader/Loader';
 import { searchMovies } from '../../services/Api/api';
 import { useState, useEffect } from 'react';
 import SearchForm from 'components/SearchForm/SearchForm';
-
-// import css from './MoviesPage.module.css';
+import css from './MoviesPage.module.css';
 
 const MoviesPage = () => {
   const location = useLocation();
@@ -16,7 +15,6 @@ const MoviesPage = () => {
 
   useEffect(() => {
     if (movieName === '') {
-      // alert.error('Enter text to search');
       return;
     }
     setMoviesList([]);
@@ -46,20 +44,20 @@ const MoviesPage = () => {
   };
 
   return (
-    <>
+    <main className={css.container}>
       <SearchForm onSubmit={handleSubmit} setSearchParams={setSearchParams} />
       {error && <p>There is no movies with this request. Please, try again</p>}
-      <div>
+      <ul>
         {moviesList.map(movie => (
-          <li key={movie.id}>
+          <li key={movie.id} className={css.listColor}>
             <Link to={`/movies/${movie.id}`} state={{ from: location }}>
               {movie.original_title || movie.name}
             </Link>
           </li>
         ))}
         {isLoading && <Loader />}
-      </div>
-    </>
+      </ul>
+    </main>
   );
 };
 

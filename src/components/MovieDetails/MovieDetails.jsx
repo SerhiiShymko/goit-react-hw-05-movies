@@ -1,6 +1,7 @@
 import { useParams, Link, Outlet, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { getMovieDetails } from '../../services/Api/api';
+import css from './MovieDetails.module.css';
 
 const MovieDetails = () => {
   const [movieDatail, setMovieDatail] = useState({});
@@ -17,11 +18,11 @@ const MovieDetails = () => {
   const scoreToFixed = score.toFixed();
 
   return (
-    <>
+    <main className={css.container}>
       <button type="button">
         <Link to={location.state?.from ?? '/'}>Go back</Link>
       </button>
-      <div className="boxMovie">
+      <div className={css.boxMovie}>
         <img
           src={
             poster_path
@@ -33,13 +34,13 @@ const MovieDetails = () => {
           loading="lazy"
           alt="poster"
         />
-        <div className="infoMovie">
+        <div className={css.infoMovie}>
           <h2>{original_title}</h2>
           <h3>User score: {scoreToFixed}%</h3>
           <h3>Overview</h3>
           <p>{overview} </p>
           <h3>Genres</h3>
-          <div className="genresList">
+          <div className={css.genresList}>
             {genres &&
               genres.length &&
               genres.map(({ id, name }) => <li key={id}>{name}</li>)}
@@ -47,7 +48,7 @@ const MovieDetails = () => {
         </div>
       </div>
 
-      <div className="boxDetails">
+      <div className={css.boxDetails}>
         <h4>Additional information</h4>
         <ul>
           <li>
@@ -64,7 +65,7 @@ const MovieDetails = () => {
         </ul>
       </div>
       <Outlet />
-    </>
+    </main>
   );
 };
 

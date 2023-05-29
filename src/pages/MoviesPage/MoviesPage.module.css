@@ -1,6 +1,20 @@
-/*
- * Стили компонента Searchbar
- */
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 20px 20px;
+}
+ul {
+  padding-top: 10px;
+}
+li {
+  color: blue;
+  padding-bottom: 10px;
+}
+
+li a:hover {
+  text-decoration: underline;
+}
+
 .searchbar {
   top: 0;
   left: 0;

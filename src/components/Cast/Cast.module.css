@@ -1,0 +1,23 @@
+.list {
+  display: inline-block;
+}
+.list :not(:last-child) {
+  margin-bottom: 5px;
+}
+.item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 10px;
+  border: 1px solid #000;
+}
+.item :not(:last-child) {
+  margin-bottom: 5px;
+}
+
+/* .name {
+  padding-top: 10px;
+} */
+.character {
+  padding-top: 10px;
+}

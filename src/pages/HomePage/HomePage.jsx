@@ -3,7 +3,7 @@ import { getTrending } from '../../services/Api/api';
 import Loader from 'components/Loader/Loader';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-// import css from './HomePage.module.css';
+import css from './HomePage.module.css';
 
 const HomePage = () => {
   const [trendMovies, setTrendMovies] = useState([]);
@@ -19,7 +19,7 @@ const HomePage = () => {
   }, []);
 
   return (
-    <>
+    <main className={css.container}>
       <h2>Trending today</h2>
       <div>
         {trendMovies.map(movie => (
@@ -31,7 +31,7 @@ const HomePage = () => {
         ))}
         {isLoading && <Loader />}
       </div>
-    </>
+    </main>
   );
 };
 
